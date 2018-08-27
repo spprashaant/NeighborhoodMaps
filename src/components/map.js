@@ -34,16 +34,29 @@ class Map extends Component{
 		this.getGoogleMaps();
 	}
 
+	
+
 	componentDidMount() {
+		const customStyle = [
+			{
+			    "featureType": "poi",
+			    "stylers": [
+			      {
+			        "visibility": "off"
+			      }
+			    ]
+			 }
+		];
 	    // Once the Google Maps API has finished loading, initialize the map
 	    this.getGoogleMaps().then((google) => {
-	      const uluru = {lat: -25.363, lng: 131.044};
+	      const bengaluru = {lat: 13.030135755290635, lng: 77.56746130820443};
 	      const map = new google.maps.Map(document.getElementById('map'), {
-	        zoom: 4,
-	        center: uluru
+	        zoom: 17,
+	        center: bengaluru,
+	        styles: customStyle
 	      });
 	      const marker = new google.maps.Marker({
-	        position: uluru,
+	        position: bengaluru,
 	        map: map
 	      });
 	    });
