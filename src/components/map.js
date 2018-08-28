@@ -68,7 +68,7 @@ class Map extends Component{
 	    this.largeInfoWindow = new google.maps.InfoWindow();
 	    this.bounds = new google.maps.LatLngBounds();
 	    let self = this;
-	    
+
 		const bengaluru = {lat: 13.030135755290635, lng: 77.56746130820443};
 	      this.map = new google.maps.Map(document.getElementById('map'), {
 	        zoom: 17,
@@ -99,9 +99,9 @@ class Map extends Component{
           this.markers[i].setMap(map);
         }
     }
-	updateMap() {
+	updateMap(nextProps) {
 		this.setMapOnAll(null);
-	    const locations = this.props.locations;
+	    const locations = nextProps.locations;
 	    let self = this;
 	    this.markers = locations.map((l) => {
 	      	const marker = new google.maps.Marker({
@@ -127,7 +127,7 @@ class Map extends Component{
 	}
 
 	componentWillReceiveProps(nextProps) {
-        this.updateMap();
+        this.updateMap(nextProps);
   	}
 	render() {
 		return (
