@@ -29,7 +29,9 @@ class App extends Component {
 
     this.state = {
       locations: this.initialLocations,
-      markers: this.intialMarkers
+      markers: this.intialMarkers,
+      selectedMarkerChanged: false,
+      selectedMarker: 0
     };
   }
 
@@ -39,16 +41,26 @@ class App extends Component {
       locations: this.initialLocations.filter((l) => l.title.match(new RegExp(filterText,'i')))
     });
   }
-  
+  handleClick = (id) => {
+    this.setState({
+      selectedMarker: id,
+      selectedMarkerChanged: true
+    });
+  }
+  handleListItemClick = () => {
+    this.setState({
+      selectedMarkerChanged: false
+    });
+  }
   render() {
     return (
       <div className="App">
         <div>
         <LocationFilter onChange={this.handleChange} />
         </div>
-        <div><LocationList locations={this.state.locations} /></div>
+        <div><LocationList onClick={this.handleClick} locations={this.state.locations} /></div>
         <div>
-        <Map locations={this.state.locations} />
+        <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
         </div>
       </div>
     );

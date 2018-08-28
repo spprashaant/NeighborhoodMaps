@@ -102,6 +102,7 @@ class Map extends Component{
 	updateMap(nextProps) {
 		this.setMapOnAll(null);
 	    const locations = nextProps.locations;
+
 	    let self = this;
 	    this.markers = locations.map((l) => {
 	      	const marker = new google.maps.Marker({
@@ -117,7 +118,23 @@ class Map extends Component{
 	      	return marker;
 	      });
 	}
+	updateListItemClick(nextProps){
+	    const markerChanged = nextProps.selectedMarkerChanged;
+	    const selectedMarker = nextProps.selectedMarker;
 
+	    let self = this;
+	    this.markers.map((m) => {
+	      	if(markerChanged && selectedMarker === m.id){
+	      		self.populateInfoWindow(m, self.largeInfoWindow);
+	      	}
+	      });
+	}
+	componentDidUpdate(prevProps) {
+		const markerChanged = prevProps.selectedMarkerChanged;
+	  	if(markerChanged){
+	      	prevProps.onListItemClick();
+      	}
+	}
 	componentDidMount() {
 		
 	    // Once the Google Maps API has finished loading, initialize the map
@@ -127,8 +144,17 @@ class Map extends Component{
 	}
 
 	componentWillReceiveProps(nextProps) {
-        this.updateMap(nextProps);
+		this.updateMap(nextProps);
+        if(nextProps.selectedMarker !== this.props.selectedMarker){
+  			this.updateListItemClick(nextProps);
+  		}
   	}
+ //  	shouldComponentUpdate(nextProps, nextState) {
+ //  		if(nextProps.selectedMarker !== this.props.selectedMarker){
+ //  			this.updateMap(nextProps);
+ //  		}
+ //    	return nextProps.selectedMarker !== this.props.selectedMarker;
+	// }
 	render() {
 		return (
 			<div id="map">
