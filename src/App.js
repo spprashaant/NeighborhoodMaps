@@ -36,8 +36,7 @@ class App extends Component {
   handleChange = (e) => {
     let filterText = e.target.value;
     this.setState({
-      locations: this.initialLocations.filter((l) => l.title.match(new RegExp(filterText,'i'))),
-      markers: this.intialMarkers.filter((m) => m.title.match(new RegExp(filterText,'i')))
+      locations: this.initialLocations.filter((l) => l.title.match(new RegExp(filterText,'i')))
     });
   }
   
@@ -49,7 +48,7 @@ class App extends Component {
         </div>
         <div><LocationList locations={this.state.locations} /></div>
         <div>
-        <Map markers={this.state.markers} locations={this.state.locations} />
+        <Map locations={this.state.locations} />
         </div>
       </div>
     );
