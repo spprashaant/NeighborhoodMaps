@@ -55,10 +55,37 @@ class Map extends Component{
 	        center: bengaluru,
 	        styles: customStyle
 	      });
-	      const marker = new google.maps.Marker({
-	        position: bengaluru,
-	        map: map
+
+	      let locations = this.props.locations;
+	      let markers = this.props.markers;
+	      let largeInfoWindow = new google.maps.InfoWindow();
+	      let bounds = new google.maps.LatLngBounds();
+
+	      function populateInfoWindow(marker, infoWindow){
+	      	if(infoWindow.marker != marker){
+	      		infoWindow.marker = marker;
+	      		infoWindow.setContent('<div>' + marker.title + '</div>');
+	      		infoWindow.open(map, marker);
+	      		infoWindow.addListener('closeClick', function(){
+	      			infoWindow.setMarker(null);
+	      		});
+	      	}
+	      }
+	      markers.map((m) => {
+	      	const marker = new google.maps.Marker({
+	      		title: m.title,
+            	position: m.position,
+            	id: m.id,
+            	map: map
+	      	})
+	      	bounds.extend(marker.position);
+
+	      	marker.addListener('click', function(){
+	      		populateInfoWindow(this, largeInfoWindow);
+	      	});
 	      });
+
+	      map.fitBounds(bounds);
 	    });
 	}
 	render() {
