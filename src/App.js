@@ -55,12 +55,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-        <LocationFilter onChange={this.handleChange} />
+        <div className="leftPane">
+          <div>
+            <LocationFilter onChange={this.handleChange} />
+          </div>
+          <div className="locationList">
+            <LocationList onClick={this.handleClick} locations={this.state.locations} />
+          </div>
         </div>
-        <div><LocationList onClick={this.handleClick} locations={this.state.locations} /></div>
-        <div>
-        <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
+        <div className="mapArea">
+          <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
         </div>
       </div>
     );

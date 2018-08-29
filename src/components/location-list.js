@@ -6,9 +6,9 @@ const LocationList = (props) => {
 		return <LocationItem onClick={props.onClick} key={location.id} location={location} />
 	})
 	return (
-		<ul className="col-md-4 list-group">
+		<div className="list-group">
 			{locations}
-		</ul>
+		</div>
 		);
 }
 
