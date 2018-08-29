@@ -5,23 +5,26 @@
 }
 .App {
 	background-color: #ccc;
-	padding:10px;
 	height: 100%;
 	display: flex;
 }
-.leftPane {
+
+
+nav {
 	background-color: #ccc;
-	padding:10px;
+	padding:5px;
 	min-height: 96vh;
 	display: flex;
 	flex-direction: column;
 }
+
 .locationFilter {
 	width: 100%;
 }
 .locationList {
 	flex: 1;
 }
+
 .mapArea {
 	flex: 1;
 	position: relative;
@@ -32,7 +35,4 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-}
-.fill {
-	margin-bottom: 85%;
 }

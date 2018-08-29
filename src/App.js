@@ -3,6 +3,7 @@ import './App.css';
 import LocationFilter from './components/location-filter';
 import Map from './components/map';
 import LocationList from './components/location-list';
+import MenuIcon from './components/menu-icon';
 
 class App extends Component {
   
@@ -52,17 +53,18 @@ class App extends Component {
       selectedMarkerChanged: false
     });
   }
+
   render() {
     return (
       <div className="App">
-        <div className="leftPane">
+        <nav id="drawer">
           <div>
             <LocationFilter onChange={this.handleChange} />
           </div>
           <div className="locationList">
             <LocationList onClick={this.handleClick} locations={this.state.locations} />
           </div>
-        </div>
+        </nav>
         <div className="mapArea">
           <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
         </div>
