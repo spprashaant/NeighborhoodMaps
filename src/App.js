@@ -53,10 +53,15 @@ class App extends Component {
       selectedMarkerChanged: false
     });
   }
-
+  handleMapClick = (e) => {
+    debugger;
+    const navBar = document.querySelector("nav");
+      navBar.classList.remove('open');
+  }
   render() {
     return (
       <div className="App">
+        <MenuIcon />
         <nav id="drawer">
           <div>
             <LocationFilter onChange={this.handleChange} />
@@ -65,7 +70,7 @@ class App extends Component {
             <LocationList onClick={this.handleClick} locations={this.state.locations} />
           </div>
         </nav>
-        <div className="mapArea">
+        <div onClick={this.handleMapClick} className="mapArea">
           <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
         </div>
       </div>

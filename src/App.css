@@ -16,7 +16,18 @@ nav {
 	min-height: 96vh;
 	display: flex;
 	flex-direction: column;
+	width: 300px;
+	position: absolute;
+	/* This trasform moves the drawer off canvas. */
+        -webkit-transform: translate(-300px, 0);
+        transform: translate(-300px, 0);
+        /* Optionally, we animate the drawer. */
+        transition: transform 0.3s ease;
 }
+nav.open {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+      }
 
 .locationFilter {
 	width: 100%;
@@ -27,12 +38,34 @@ nav {
 
 .mapArea {
 	flex: 1;
+	min-height: 96vh;
 	position: relative;
 }
+a#menu svg {
+        width: 40px;
+        fill: #000;
+      }
 #map {
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
+}
+
+@media (max-width: 600px) {
+	a#menu {
+		display: block;
+	}
+}
+@media (min-width: 601px) {
+	a#menu {
+		display: none;
+	}
+	/* We open the drawer. */
+        nav {
+          position:relative;
+          -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+        }
 }
