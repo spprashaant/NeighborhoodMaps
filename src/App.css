@@ -30,12 +30,30 @@ nav.open {
       }
 
 .locationFilter {
-	width: 100%;
+	margin-bottom: 10px;
 }
 .locationList {
 	flex: 1;
+	
+}
+.list {
+	overflow-y: auto;
+}
+.list a {
+	background-color: #eee; 
+    color: black; 
+    display: block; 
+    padding: 12px; 
+}
+.locationList a:hover {
+    background-color: #ccc;
+    cursor: pointer; 
 }
 
+.locationList a.active {
+    background-color: #4CAF50; 
+    color: white;
+}
 .mapArea {
 	flex: 1;
 	min-height: 96vh;
@@ -62,10 +80,9 @@ a#menu svg {
 	a#menu {
 		display: none;
 	}
-	/* We open the drawer. */
-        nav {
-          position:relative;
-          -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-        }
+    nav {
+      position:relative;
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
 }

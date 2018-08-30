@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LocationItem from './location-item';
 
 const LocationList = (props) => {
@@ -6,7 +6,7 @@ const LocationList = (props) => {
 		return <LocationItem onClick={props.onClick} key={location.id} location={location} />
 	})
 	return (
-		<div className="list-group">
+		<div className="list">
 			{locations}
 		</div>
 		);
