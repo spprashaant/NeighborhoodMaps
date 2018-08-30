@@ -125,7 +125,6 @@ class Map extends Component{
 	    this.map.fitBounds(this.bounds);
 	}
 	updateListItemClick(nextProps){
-	    const markerChanged = nextProps.selectedMarkerChanged;
 	    const selectedMarker = nextProps.selectedMarker;
 
 	    let self = this;
@@ -133,6 +132,8 @@ class Map extends Component{
 	      	if(selectedMarker === m.id){
 	      		self.populateInfoWindow(m, self.largeInfoWindow);
 	      	}
+	      	return 0;
+
 	      });
 	}
 	

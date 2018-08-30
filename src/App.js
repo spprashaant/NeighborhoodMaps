@@ -51,7 +51,6 @@ class App extends Component {
         latlng: response.coords.latitude + ',' + response.coords.longitude
       });
     });
-    const endPoint = "https://api.foursquare.com/v2/venues/search?";
     const params = {
       client_id: "4SKA2A1ZDUW2SSCIMNC1LSZ2USQ1SAVFZDTYDDKIINZYPCG3",
       client_secret: "MYOQCAVDRAY1JOKHJN54NENPA15QAC3RYMHXYIFZSDOBSQMZ",
