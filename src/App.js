@@ -6,54 +6,37 @@ import LocationList from './components/location-list';
 import MenuIcon from './components/menu-icon';
 
 class App extends Component {
-  
-  
-
   constructor(props){
     super(props);
-
-    // this.initialLocations = [
-    //               {id: 1, title: 'MS Ramaiah Medical College', location: {lat: 13.030094, lng: 77.567676}},
-    //               {id: 2, title: 'Ramaiah College of Law', location: {lat: 13.031599, lng: 77.565401}},
-    //               {id: 3, title: 'Nandhini Deluxe', location: {lat: 13.031704, lng: 77.570337}},
-    //               {id: 4, title: 'Fab India', location: {lat: 13.030742, lng: 77.570444}},
-    //               {id: 5, title: 'ICICI Bank', location: {lat: 13.028693, lng: 77.571463}},
-    //               {id: 6, title: 'PMC Park', location: {lat: 13.029331, lng: 77.566517}},
-    //             ];
-
+    //set the initial state
     this.state = {
       initialLocations: [],
       locations: [],
-      selectedMarkerChanged: false,
       selectedMarker: 0,
       latlng: ""
     };
   }
 
+  //handle the filter text change
   handleChange = (e) => {
     let filterText = e.target.value;
     this.setState({
       locations: this.state.initialLocations.filter((l) => l.title.match(new RegExp(filterText,'i')))
     });
   }
+  //handle the list item click
   handleClick = (id) => {
     this.setState({
       selectedMarker: id,
-      selectedMarkerChanged: true
     });
   }
-  handleListItemClick = () => {
-    this.setState({
-      selectedMarkerChanged: false
-    });
-  }
+  //handle click on the map
   handleMapClick = (e) => {
     const navBar = document.querySelector("nav");
       navBar.classList.remove('open');
   }
-  loadLocations = (data) => {
-    console.log(data);
-  }
+
+  //get the current location
   getLocation = () => {
     navigator.geolocation.getCurrentPosition(response => {
       this.setState({
@@ -61,6 +44,7 @@ class App extends Component {
       });
     });
   }
+  //Search for nearby locations using FourSquare api
   searchLocations = () => {
     navigator.geolocation.getCurrentPosition(response => {
       this.setState({
@@ -104,12 +88,14 @@ class App extends Component {
           <div>
             <LocationFilter onChange={this.handleChange} />
           </div>
+          <div>Locations from Foursquare</div>
           <div className="locationList">
             <LocationList onClick={this.handleClick} locations={this.state.locations} />
           </div>
+
         </nav>
         <div onClick={this.handleMapClick} className="mapArea">
-          <Map selectedMarkerChanged={this.state.selectedMarkerChanged} selectedMarker={this.state.selectedMarker} onListItemClick={this.handleListItemClick} locations={this.state.locations} />
+          <Map selectedMarker={this.state.selectedMarker} locations={this.state.locations} />
         </div>
       </div>
     );

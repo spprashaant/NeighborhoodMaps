@@ -42,6 +42,7 @@ class Map extends Component{
 	    this.bounds = null;
 	}
 
+	//populate the info window
 	populateInfoWindow(marker, infoWindow){
 	      	if(infoWindow.marker !== marker){
 	      		const t = marker.title ? marker.title: "No info";
@@ -54,6 +55,7 @@ class Map extends Component{
 	      		});
 	      	}
 	}
+	//Initial load of map
 	setMap(locations) {
 		const customStyle = [
 			{
@@ -66,7 +68,6 @@ class Map extends Component{
 			 }
 		];
 
-		//const locations = this.props.locations;
 	    this.largeInfoWindow = new google.maps.InfoWindow();
 	    this.bounds = new google.maps.LatLngBounds();
 	    let self = this;
@@ -102,6 +103,7 @@ class Map extends Component{
         }
     }
 	updateMap(nextProps) {
+		//clear markers
 		this.setMapOnAll(null);
 	    const locations = nextProps.locations;
 
@@ -133,14 +135,8 @@ class Map extends Component{
 	      	}
 	      });
 	}
-	componentDidUpdate(prevProps) {
-		const markerChanged = prevProps.selectedMarkerChanged;
-	  	if(markerChanged){
-	      	prevProps.onListItemClick();
-      	}
-	}
+	
 	componentDidMount() {
-		
 	    // Once the Google Maps API has finished loading, initialize the map
 	    this.getGoogleMaps().then((google) => {
 	      this.setMap(this.props.locations);
@@ -155,12 +151,6 @@ class Map extends Component{
   			this.updateListItemClick(nextProps);
   		}
   	}
- //  	shouldComponentUpdate(nextProps, nextState) {
- //  		if(nextProps.selectedMarker !== this.props.selectedMarker){
- //  			this.updateMap(nextProps);
- //  		}
- //    	return nextProps.selectedMarker !== this.props.selectedMarker;
-	// }
 	render() {
 		return (
 			<div id="map">
