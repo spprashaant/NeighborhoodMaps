@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Clone the github repository and 
 * cd NeighborhoodMaps
+* Install the project dependencies by running `npm install`. This will download the node_modules folder.
 * start the server with `npm start` or `yarn start`
 
 ## FourSquare API
