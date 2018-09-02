@@ -47,7 +47,7 @@ class Map extends Component {
         if (infoWindow.marker !== marker) {
             const t = marker.title ? marker.title : "No info";
             infoWindow.marker = marker;
-
+            marker.setAnimation(google.maps.Animation.DROP);
             infoWindow.setContent('<div>' + t + '</div>');
             infoWindow.open(this.map, marker);
             infoWindow.addListener('closeClick', function() {
