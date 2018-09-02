@@ -25,10 +25,20 @@ class App extends Component {
         });
     }
     //handle the list item click
-    handleClick = (id) => {
-        this.setState({
+    handleClick = (event, id) => {
+      let sap = {ui:{keycodes:{SPACE:32, ENTER:13 }}};
+      if (event.type=="click" ||
+        event.keyCode == sap.ui.keycodes.ENTER) {
+        var ref = event.target != null ? event.target : event.srcElement;
+        if (ref) {
+          this.setState({
             selectedMarker: id,
-        });
+          });
+        }
+    }
+        // this.setState({
+        //     selectedMarker: id,
+        // });
     }
     //handle click on the map
     handleMapClick = (e) => {
@@ -114,25 +124,25 @@ class App extends Component {
             <
             nav id = "drawer" >
             <
-            div >
+            section >
             <
             LocationFilter onChange = { this.handleChange }
             /> <
-            /div> <
-            div > Locations from Foursquare < /div> <
-            div className = "locationList" >
+            /section> <
+            section > Locations from Foursquare < /section> <
+            section className = "locationList" >
             <
             LocationList onClick = { this.handleClick } locations = { this.state.locations }
             /> <
-            /div>
+            /section>
 
             <
             /nav> <
-            div onClick = { this.handleMapClick } className = "mapArea" >
+            article onClick = { this.handleMapClick } className = "mapArea" >
             <
             Map selectedMarker = { this.state.selectedMarker } locations = { this.state.locations }
             /> <
-            /div> <
+            /article> <
             /div>
         );
     }

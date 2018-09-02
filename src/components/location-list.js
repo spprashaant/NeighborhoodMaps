@@ -7,8 +7,8 @@ const LocationList = (props) => {
         />
     })
     return ( <
-        div className = "list" > { locations } <
-        /div>
+        section className = "list" > { locations } <
+        /section>
     );
 }
 

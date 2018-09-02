@@ -1,8 +1,9 @@
 import React from 'react';
 
 const LocationItem = (props) => {
-        return ( < a onClick = {
-                (event) => props.onClick(props.location.id) } > { props.location.title } <
+        return ( < a tabIndex="0" role="link" onKeyDown={
+                (event) => props.onClick(event, props.location.id) }   onClick = {
+                (event) => props.onClick(event, props.location.id) } > { props.location.title } <
             /a>);
         }
 
