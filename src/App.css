@@ -1,88 +1,97 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 .App {
-	background-color: #ccc;
-	height: 100%;
-	display: flex;
+    background-color: #ccc;
+    height: 100%;
+    display: flex;
 }
 
 
 nav {
-	background-color: #ccc;
-	padding:5px;
-	min-height: 96vh;
-	display: flex;
-	flex-direction: column;
-	width: 300px;
-	position: absolute;
-	/* This trasform moves the drawer off canvas. */
-        -webkit-transform: translate(-300px, 0);
-        transform: translate(-300px, 0);
-        /* Optionally, we animate the drawer. */
-        transition: transform 0.3s ease;
+    background-color: #ccc;
+    padding: 5px;
+    min-height: 96vh;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
 }
+
 nav.open {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-      }
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
 
 .locationFilter {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 .locationList {
-	flex: 1;
-	
+    flex: 1;
 }
+
 .list {
-	overflow-y: auto;
+    overflow-y: auto;
 }
+
 .list a {
-	background-color: #eee; 
-    color: black; 
-    display: block; 
-    padding: 12px; 
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
 }
+
 .locationList a:hover {
     background-color: #ccc;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .locationList a.active {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     color: white;
 }
+
 .mapArea {
-	flex: 1;
-	min-height: 96vh;
-	position: relative;
+    flex: 1;
+    min-height: 96vh;
+    position: relative;
 }
+
 a#menu svg {
-        width: 40px;
-        fill: #000;
-      }
+    width: 40px;
+    fill: #000;
+}
+
 #map {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 @media (max-width: 600px) {
-	a#menu {
-		display: block;
-	}
+    a#menu {
+        display: block;
+    }
 }
+
 @media (min-width: 601px) {
-	a#menu {
-		display: none;
-	}
+    a#menu {
+        display: none;
+    }
     nav {
-      position:relative;
-      -webkit-transform: translate(0, 0);
-      transform: translate(0, 0);
+        position: relative;
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
