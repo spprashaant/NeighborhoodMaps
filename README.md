@@ -22,3 +22,9 @@ This project uses the FourSquare api to load the locations
 
 After the application loads, a list of locations are loaded which are displayed on the left pane. A set of corresponding markers are displayed on the map also. To know more informatin about a location, simply click on the marker or location on the left pane. A textbox is provided to filter the locations. As soon as you begin typing the locations and markers are dynamically filtered for matching terms. 
 
+## Contribution
+Make the change and submit a pull request. See CONTRIBUTING for more details.
+
+## LICENSE
+GNU Affero General Public License v3.0
+See the LICENSE file in this project repository for more information
