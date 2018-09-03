@@ -27,8 +27,8 @@ class App extends Component {
     //handle the list item click
     handleClick = (event, id) => {
       let sap = {ui:{keycodes:{SPACE:32, ENTER:13 }}};
-      if (event.type=="click" ||
-        event.keyCode == sap.ui.keycodes.ENTER) {
+      if (event.type==="click" ||
+        event.keyCode === sap.ui.keycodes.ENTER) {
         var ref = event.target != null ? event.target : event.srcElement;
         if (ref) {
           this.setState({
@@ -36,9 +36,7 @@ class App extends Component {
           });
         }
     }
-        // this.setState({
-        //     selectedMarker: id,
-        // });
+
     }
     //handle click on the map
     handleMapClick = (e) => {
@@ -73,7 +71,6 @@ class App extends Component {
         const baseUrl = "https://api.foursquare.com/v2/venues/search";
         const self = this;
         axios.get(baseUrl, {
-
                 params: params
             })
             .then(function(response) {
@@ -92,26 +89,8 @@ class App extends Component {
             })
             .catch(function(error) {
                 // handle error
-                console.log(error);
+                alert(error);
             });
-
-        // fetch(`https://api.foursquare.com/v2/venues/search?client_id=${params.client_id}&client_secret=${params.client_secret}&v=${params.v}&ll=13.030135755290635, 77.56746130820443&limit=${params.limit}`).then(results => {
-        //       return results.json();
-        //     }).then(data => {
-        //       const apiLocations = data.response.venues.map((venue) => {
-        //           return (
-        //             {"id": venue.id, 
-        //               "title": venue.name, 
-        //               "location": {"lat": venue.location.lat, "lng": venue.location.lng}
-        //             }
-        //           );
-        //         });
-        //       this.setState({
-        //         initialLocations: apiLocations,
-        //         locations: apiLocations
-        //       })
-        //     })
-        //     .catch(e => console.log(e));
     }
     componentDidMount() {
         this.searchLocations();

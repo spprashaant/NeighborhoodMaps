@@ -3,6 +3,7 @@ import '../App.css';
 /* global google */
 
 class Map extends Component {
+	
     getGoogleMaps() {
         // If we haven't already defined the promise, define it
         if (!this.googleMapsPromise) {
