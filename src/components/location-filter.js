@@ -9,8 +9,9 @@ class LocationFilter extends Component {
     render() {
         return ( <
             div >
+            <label for="filter">Filter Locations</label>
             <
-            input placeholder = "Filter Foursquare locations"
+            input role="" placeholder = "Filter Foursquare locations"
             className = "form-control locationFilter"
             value = { this.state.term } onChange = {
                 (event) => {
@@ -19,7 +20,10 @@ class LocationFilter extends Component {
                 }
 
             }
-            /> <
+            id="filter"
+            />
+
+             <
             /div>
         );
     }
