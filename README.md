@@ -14,6 +14,15 @@ Clone the github repository and
 * Install the project dependencies by running `npm install`. This will download the node_modules folder.
 * start the server with `npm start` or `yarn start`
 
+## Running the application in production mode
+
+* npm run build
+* serve -s build
+
+Ensure that serve is installed by running npm install -g serve
+And then visit http://localhost:5000 to view the application in production mode
+Service worker functionality will be available in production mode.
+
 ## FourSquare API
 
 This project uses the FourSquare api to load the locations
